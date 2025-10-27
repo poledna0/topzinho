@@ -48,7 +48,7 @@ fn cpu_vec() -> Vec<usize> {
 
 fn cpu_porcentagem() -> f32 {
     let primeira = cpu_vec();
-    sleep(Duration::from_millis(1000));
+    sleep(Duration::from_millis(500));
     let segunda = cpu_vec();
 
     // inter cria o interador e o .sum soma todos os valores 

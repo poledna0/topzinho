@@ -16,6 +16,7 @@ O objetivo principal do projeto é migrar esta funcionalidade para um **Módulo 
 
 **Imagem de Exemplo:**
 
-![Demonstração da variação de uso de CPU com e sem estresse](img1.png)
-
+<p align="center">
+  <img src="img1.png" alt="Demonstração da variação de uso de CPU com e sem estresse" width="700"/> 
+  </p>
 ***

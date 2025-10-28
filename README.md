@@ -20,13 +20,13 @@ cd topizinho
 make
 ```
 
-O comando make irá:
+### O comando make irá:
 
-    Compilar o projeto em modo release (cargo build --release);
+  #### Compilar o projeto em modo release (cargo build --release);
 
-    Mover o executável para /usr/local/bin/tp;
+  #### Mover o executável para /usr/local/bin/tp;
 
-    Permitir que você execute o programa apenas digitando tp no terminal.
+  #### Permitir que você execute o programa apenas digitando tp no terminal.
 
 Se preferir instalar apenas no seu usuário (sem sudo), edite o Makefile e troque:
 

@@ -20,7 +20,7 @@ Abaixo, o resultado da execução do `topizinho`.
 **Imagem de Exemplo:**
 
 <p align="center">
-  <img src="img1.png" alt="Demonstração da variação de uso de CPU com e sem estresse" width="700"/>
+  <img src="img1.png" alt="Demonstração " width="700"/>
 </p>
 
 ***

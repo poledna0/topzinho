@@ -14,7 +14,7 @@ O objetivo principal do projeto é migrar esta funcionalidade para um **Módulo 
 
 ## Demonstração de Uso (Modo _User_)
 
-Abaixo, o resultado da execução do `topizinho` em dois cenários: um com carga normal e outro sob estresse de CPU (iniciado com `stress --cpu 4`).
+Abaixo, o resultado da execução do `topizinho`.
 
 
 **Imagem de Exemplo:**

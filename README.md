@@ -16,7 +16,7 @@ Clone o repositório e compile o projeto:
 
 ```bash
 git clone https://github.com/poledna0/topzinho.git
-cd topizinho
+cd topzinho
 make
 ```
 

@@ -5,6 +5,35 @@ fn le_arquivo(dir: &str) -> String {
     fs::read_to_string(dir).expect("Erro ao ler o arquivo")
 }
 
+fn uptime() -> f64 {
+    let conteudo = le_arquivo("/proc/uptime");
+
+    let linha = conteudo
+        .lines()
+        .next()
+        .expect("err 1 uptime");
+
+    // Pega o primeiro valor e converte para f64 q é o valor de segundos que existe o 
+    let primeiro: f64 = linha
+        .split_whitespace()
+        .next()
+        .expect("nao foi possivel extrair o primeiro valor")
+        .parse()
+        .expect("falha ao converter uptime para número");
+
+
+    primeiro
+}
+
+fn imprimir_uptime(segundos: f64) {
+    let total_segundos = segundos as u64;
+    let dias = total_segundos / 86_400;
+    let horas = (total_segundos % 86_400) / 3_600;
+    let minutos = (total_segundos % 3_600) / 60;
+
+    println!("Uptime: {}d {}h {}m", dias, horas, minutos);
+}
+
 /// lẽ os valores da primeira linha de /proc/stat (CPU) e retorna como vetor de usize
 fn cpu_vec() -> Vec<usize> {
 
@@ -153,15 +182,30 @@ fn memoria_porcentagem() -> (f32, usize, usize) {
 }
 
 fn main() {
-    // threads para CPU e memória
-    // thread::spawn cria uma nova thread, e recebe uma func anonima como parametro 
-    let cpu_thread = thread::spawn(|| cpu_porcentagem());
-    let mem_thread = thread::spawn(|| memoria_porcentagem());
 
-    let cpu = cpu_thread.join().unwrap();
-    let (mem_percent, mem_usado, mem_total) = mem_thread.join().unwrap();
 
-    println!("CPU: {:.2}%", cpu);
-    // /1_000_000.0 converte de KB para GB pq os valores vem em kilobytes do /proc/meminfo
-    println!("Memória: {:.2}% ({:.2} GB / {:.2} GB)", mem_percent, mem_usado as f32 / 1_000_000.0, mem_total as f32 / 1_000_000.0);
+    loop{
+
+        // threads para CPU e memória
+        // thread::spawn cria uma nova thread, e recebe uma func anonima como parametro 
+        let cpu_thread = thread::spawn(|| cpu_porcentagem());
+        let mem_thread = thread::spawn(|| memoria_porcentagem());
+        let uptime_thread = thread::spawn(|| uptime());
+    
+        let cpu = cpu_thread.join().unwrap();
+        let (mem_percent, mem_usado, mem_total) = mem_thread.join().unwrap();
+        let segundos_uptime = uptime_thread.join().unwrap();
+    
+        print!("\x1B[2J\x1B[1;1H");
+
+        println!("CPU: {:.2}%", cpu);
+        // /1_000_000.0 converte de KB para GB pq os valores vem em kilobytes do /proc/meminfo
+        println!("Memória: {:.2}% ({:.2} GB / {:.2} GB)", mem_percent, mem_usado as f32 / 1_000_000.0, mem_total as f32 / 1_000_000.0);
+    
+        imprimir_uptime(segundos_uptime);
+    
+        sleep(Duration::from_millis(500));
+        
+
+    }
 }

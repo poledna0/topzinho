@@ -1,6 +1,6 @@
 # topizinho
 
-Uma ferramenta simples e minimalista para monitoramento de recursos do sistema, com foco em CPU e memória.
+Uma ferramenta simples e minimalista para monitoramento de recursos do sistema, mostando o uptime da maquina e o uso da CPU e memória.
 
 ## Visão Geral
 

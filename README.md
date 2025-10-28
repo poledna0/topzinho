@@ -30,9 +30,12 @@ O comando make irá:
 
 Se preferir instalar apenas no seu usuário (sem sudo), edite o Makefile e troque:
 
+```bash
 BIN_DIR=/usr/local/bin
+```
 
 por:
 
+```bash
 BIN_DIR=$(HOME)/.local/bin
-
+```

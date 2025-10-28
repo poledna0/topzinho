@@ -28,6 +28,8 @@ make
 
   #### Permitir que você execute o programa apenas digitando tp no terminal.
 
+---
+
 Se preferir instalar apenas no seu usuário (sem sudo), edite o Makefile e troque:
 
 ```bash

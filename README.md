@@ -1,26 +1,38 @@
-# topizinho
+#  topizinho
 
-Uma ferramenta simples e minimalista para monitoramento de recursos do sistema, mostando o uptime da maquina e o uso da CPU e memória.
+Uma ferramenta **simples e minimalista** para monitoramento de recursos do sistema Linux — mostrando **uptime**, **uso da CPU** e **memória RAM**, em tempo real.
 
-## Visão Geral
+---
 
-O `topizinho` mostra de forma simples a porcentagem de uso da **RAM** e da **CPU** do sistema.
+##  Visão Geral
 
-Esta versão inicial, executada em **modo _user_**, foi desenvolvida primariamente como um exercício de programação concorrente, utilizando _threads_ para as práticas de monitoramento e atualização de dados.
+O `topizinho` exibe de forma limpa a porcentagem de uso da **CPU** e da **RAM**, além do **tempo de atividade (uptime)** do sistema.
 
-## Evolução Futura
+---
 
-O objetivo principal do projeto é migrar esta funcionalidade para um **Módulo de Kernel**, aprofundando o aprendizado sobre a interação em nível de sistema operacional.
+##  Instalação
 
-## Demonstração de Uso (Modo _User_)
+Clone o repositório e compile o projeto:
 
-Abaixo, o resultado da execução do `topizinho`.
+```bash
+git clone https://github.com/poledna0/topzinho.git
+cd topizinho
+make
+```
 
+O comando make irá:
 
-**Imagem de Exemplo:**
+    Compilar o projeto em modo release (cargo build --release);
 
-<p align="center">
-  <img src="img2.png" alt="Demonstração " width="700"/>
-</p>
+    Mover o executável para /usr/local/bin/tp;
 
-***
+    Permitir que você execute o programa apenas digitando tp no terminal.
+
+Se preferir instalar apenas no seu usuário (sem sudo), edite o Makefile e troque:
+
+BIN_DIR=/usr/local/bin
+
+por:
+
+BIN_DIR=$(HOME)/.local/bin
+

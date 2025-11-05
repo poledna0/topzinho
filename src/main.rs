@@ -1,4 +1,5 @@
 use std::{fs, thread::{self, sleep}, time::Duration};
+mod grafico;
 
 /// lê o conteúdo de um arquivo como uma string e retorna uma string
 fn le_arquivo(dir: &str) -> String {
@@ -181,7 +182,7 @@ fn memoria_porcentagem() -> (f32, usize, usize) {
     (uso_percent, usado, total)
 }
 
-fn main() {
+fn run(){
 
 
     loop{
@@ -198,14 +199,27 @@ fn main() {
     
         print!("\x1B[2J\x1B[1;1H");
 
-        println!("CPU: {:.2}%", cpu);
+
+        print!("CPU: {:.2}%\n", cpu);
+        // chama a barra de progresso
+        grafico::progress_bar(cpu as usize);
+        
+        // um \n para ficar mais bonto
+        println!("\n");
+        
         // /1_000_000.0 converte de KB para GB pq os valores vem em kilobytes do /proc/meminfo
         println!("Memória: {:.2}% ({:.2} GB / {:.2} GB)", mem_percent, mem_usado as f32 / 1_000_000.0, mem_total as f32 / 1_000_000.0);
+        grafico::progress_bar(mem_percent as usize);
     
+        print!("\n\n");
         imprimir_uptime(segundos_uptime);
     
         sleep(Duration::from_millis(500));
         
 
     }
+}
+
+fn main() {
+    run();
 }

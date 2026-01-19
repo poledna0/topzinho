@@ -1,4 +1,4 @@
-#  topizinho
+#  legalzinho
 
 Uma ferramenta **simples e minimalista** para monitoramento de recursos do sistema Linux — mostrando **uptime**, **uso da CPU** e **memória RAM**, em tempo real.
 
